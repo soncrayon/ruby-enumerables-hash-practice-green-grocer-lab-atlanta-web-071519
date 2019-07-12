@@ -20,7 +20,7 @@ def apply_coupons(consolidated_cart, coupons)
       if ((consolidated_cart[coupon[:item]]) && (consolidated_cart[coupon[:item]][:count] >= coupon[:num]))
         item_w_coupon_name = "#{coupon[:item]} W/COUPON"
         item_w_coupon_count = coupon[:num] 
-        item_w_coupon_clearance = true 
+        item_w_coupon_clearance = consolidated_cart[coupon[:item]][:clearance]#true 
         item_w_coupon_price = (coupon[:cost]) / item_w_coupon_count
         
             if cart_w_coupons[item_w_coupon_name]
