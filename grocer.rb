@@ -31,6 +31,7 @@ def apply_coupons(consolidated_cart, coupons)
                 :count => item_w_coupon_count
               }})
             end 
+            
         consolidated_cart[coupon[:item]][:count] = consolidated_cart[coupon[:item]][:count] - item_w_coupon_count 
       end 
       }
