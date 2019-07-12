@@ -24,6 +24,8 @@ def apply_coupons(consolidated_cart, coupons)
       coupons[1].map{|coupon|
         new_array.push(coupon)
       }
+      coupons = new_array 
+    end 
  
     coupons.map { |coupon|
       if ((consolidated_cart[coupon[:item]]) && (consolidated_cart[coupon[:item]][:count] >= coupon[:num]))
