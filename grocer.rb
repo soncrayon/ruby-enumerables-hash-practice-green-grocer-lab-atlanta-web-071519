@@ -25,6 +25,7 @@ def apply_coupons(consolidated_cart, coupons)
         
             if cart_w_coupons[item_w_coupon_name]
               item_w_coupon_name[:count] += coupon[:num] 
+              binding.pry 
             elsif cart_w_coupons[item_w_coupon_name].nil? 
               cart_w_coupons.merge!({item_w_coupon_name => {:price => item_w_coupon_price,
                 :clearance => item_w_coupon_clearance,
