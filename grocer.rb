@@ -13,7 +13,7 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(consolidated_cart, coupons)
-  #set new coupon cart
+  
   cart_w_coupons = {}
  
     coupons.map { |coupon|
