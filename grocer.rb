@@ -1,3 +1,5 @@
+require 'pry'
+
 def consolidate_cart(cart)
   organized_cart = {}
   cart.map { |item_hash|
