@@ -38,12 +38,6 @@ def apply_coupons(consolidated_cart, coupons)
        
      cart_w_coupons = cart_w_coupons.merge!(consolidated_cart)
    
-  cart_w_coupons.map { |k, v| 
-   if v[:count] == 0 
-    cart_w_coupons.delete(k) 
-  end
-   } 
-  
   cart_w_coupons
 end 
 
