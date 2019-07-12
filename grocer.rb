@@ -21,7 +21,6 @@ def apply_coupons(consolidated_cart, coupons)
         item_w_coupon_name = "#{coupon[:item]} W/COUPON"
         item_w_coupon_count = coupon[:num] 
         item_w_coupon_clearance = true 
-#maybe put the '2f modulo' step at the very end (update the cart_w_coupons by mapping and adjusting key[:price] with it, that way, if it's a problem for the tests, it can easily be taken out)
         item_w_coupon_price = (coupon[:cost]) / item_w_coupon_count
         
             if cart_w_coupons[item_w_coupon_name]
