@@ -21,7 +21,7 @@ def apply_coupons(consolidated_cart, coupons)
       coupons[0].map {|coupon|
         new_array.push(coupon)
       }
-      coupons[1].map{|coupon|
+      coupons[1].map {|coupon|
         new_array.push(coupon)
       }
       coupons = new_array 
