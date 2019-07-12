@@ -16,6 +16,15 @@ def apply_coupons(consolidated_cart, coupons)
   
   cart_w_coupons = {}
  
+    if coupons == [coupon, coupon]
+      new_array = []
+      coupons[0].map {|coupon|
+        new_array.push(coupon)
+      }
+      coupons[1].map{|coupon|
+        new_array.push(coupon)
+      }
+ 
     coupons.map { |coupon|
       if ((consolidated_cart[coupon[:item]]) && (consolidated_cart[coupon[:item]][:count] >= coupon[:num]))
         item_w_coupon_name = "#{coupon[:item]} W/COUPON"
