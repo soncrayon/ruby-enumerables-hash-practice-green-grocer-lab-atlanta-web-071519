@@ -1,15 +1,72 @@
 def consolidate_cart(cart)
-  # code here
+  organized_cart = {}
+  cart.map { |item_hash|
+    item_hash.each { |name, price_details|
+      if organized_cart[name].nil?
+        organized_cart[name] = price_details.merge({:count => 1})
+      else
+        organized_cart[name][:count] += 1
+      end
+    }
+  }
+  return organized_cart
 end
 
-def apply_coupons(cart, coupons)
-  # code here
-end
+def apply_coupons(consolidated_cart, coupons)
+  #set new coupon cart
+  cart_w_coupons = {}
+  #add applicable coupons to coupon cart 
+    coupons.map { |coupon|
+      if ((consolidated_cart[coupon[:item]]) && (consolidated_cart[coupon[:item]][:count] >= coupon[:num]))
+        item_w_coupon_name = "#{coupon[:item]} W/COUPON"
+        item_w_coupon_count = coupon[:num] 
+        item_w_coupon_clearance = true 
+#maybe put the '2f modulo' step at the very end (update the cart_w_coupons by mapping and adjusting key[:price] with it, that way, if it's a problem for the tests, it can easily be taken out)
+        item_w_coupon_price = (coupon[:cost]) / item_w_coupon_count
+        
+            if cart_w_coupons[item_w_coupon_name]
+              item_w_coupon_name[:count] += 1 
+            elsif cart_w_coupons[item_w_coupon_name].nil? 
+              cart_w_coupons.merge!({item_w_coupon_name => {:price => item_w_coupon_price,
+                :clearance => item_w_coupon_clearance,
+                :count => item_w_coupon_count
+              }})
+            end 
+        consolidated_cart[coupon[:item]][:count] = consolidated_cart[coupon[:item]][:count] - item_w_coupon_count 
+      end 
+      }
+       
+     cart_w_coupons = cart_w_coupons.merge!(consolidated_cart)
+   
+  cart_w_coupons.map { |k, v| 
+   if v[:count] == 0 
+    cart_w_coupons.delete(k) 
+  end
+   } 
+  
+  cart_w_coupons
+end 
 
 def apply_clearance(cart)
-  # code here
+  cart.map { |item, price_hash|
+    if price_hash[:clearance] == true
+      price_hash[:price] = (price_hash[:price] * 0.8).round(2)
+    end
+  }
+  return cart
 end
 
-def checkout(cart, coupons)
-  # code here
+def checkout(items, coupons)
+  cart = consolidate_cart(items)
+  cart1 = apply_coupons(cart, coupons)
+  cart2 = apply_clearance(cart1)
+  
+  total = 0
+  
+  cart2.map { |name, price_hash|
+    total += price_hash[:price] * price_hash[:count]
+  }
+  
+  total > 100 ? total * 0.9 : total
+  
 end
