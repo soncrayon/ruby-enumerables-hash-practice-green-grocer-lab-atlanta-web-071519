@@ -16,7 +16,7 @@ def apply_coupons(consolidated_cart, coupons)
   
   cart_w_coupons = {}
  
-    if coupons == [coupon, coupon]
+    if coupons.length > 1 
       new_array = []
       coupons[0].map {|coupon|
         new_array.push(coupon)
