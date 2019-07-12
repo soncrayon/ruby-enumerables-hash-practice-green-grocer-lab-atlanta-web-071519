@@ -38,7 +38,7 @@ def apply_coupons(consolidated_cart, coupons)
        
      cart_w_coupons = cart_w_coupons.merge!(consolidated_cart)
    
-  cart_w_coupons
+  return cart_w_coupons
 end 
 
 def apply_clearance(cart)
