@@ -15,7 +15,7 @@ end
 def apply_coupons(consolidated_cart, coupons)
   #set new coupon cart
   cart_w_coupons = {}
-  #add applicable coupons to coupon cart 
+ 
     coupons.map { |coupon|
       if ((consolidated_cart[coupon[:item]]) && (consolidated_cart[coupon[:item]][:count] >= coupon[:num]))
         item_w_coupon_name = "#{coupon[:item]} W/COUPON"
