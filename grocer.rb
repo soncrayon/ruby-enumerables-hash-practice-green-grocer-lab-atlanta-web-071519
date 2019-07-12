@@ -26,7 +26,7 @@ def apply_coupons(consolidated_cart, coupons)
         item_w_coupon_price = (coupon[:cost]) / item_w_coupon_count
         
             if cart_w_coupons[item_w_coupon_name]
-              binding.pry 
+              #binding.pry 
               cart_w_coupons[item_w_coupon_name][:count] += coupon[:num] 
              
             elsif cart_w_coupons[item_w_coupon_name].nil? 
